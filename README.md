@@ -1,16 +1,12 @@
 # interview_test
 
-A new Flutter project.
+For implementing data loading, basic UI, and error handling, I have used Flutter framework along with the BLoC architecture pattern. I have created a separate module for the data layer, which consists of repository, data sources, and models. The UI layer consists of widgets that get their data from the BLoC layer. The BLoC layer handles the business logic and communicates with the data layer and UI layer.
 
-## Getting Started
+The implementation consists of the following files and folders:
 
-This project is a starting point for a Flutter application.
+main.dart: This file is the entry point of the application. It sets up the MaterialApp widget and initializes the BLoC provider.
+screen/: This folder contains all the UI widgets used in the app. Each widget gets its data from the BLoC layer and displays it.
+blocs/: This folder contains the BLoC classes that handle the business logic. It communicates with the data layer and UI layer.
+repository/ and model/: This folder contains the repository, data sources, and models used in the app. The repository communicates with the data sources to get data and returns it to the BLoC layer.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The widget tests for the UI layer test the widgets used in the app. They ensure that the widgets display the correct data and handle user interactions correctly.
