@@ -7,24 +7,42 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:interview_test/custom_widgets/custom_container.dart';
 
 import 'package:interview_test/main.dart';
+import 'package:interview_test/model/food_item.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('CustomContainer displays food item information', (WidgetTester tester) async {
+    // Build a FoodItem model
+    final foodItem = FoodItem(
+      calories: '516 kcal',
+      carbos: '47 g',
+      description: '...',
+      difficulty: 0,
+      fats: '8 g',
+      headline: '...',
+      id: '533143aaff604d567f8b4571',
+      image: 'https://...',
+      name: 'Crispy Fish Goujons',
+      proteins: '43 g',
+      thumb: 'https://...',
+      time: 'PT35M',
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Build the CustomContainer widget
+    await tester.pumpWidget(
+      MaterialApp(
+        home: CustomContainer(
+          foodItem: foodItem,
+        ),
+      ),
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the correct information is displayed
+    expect(find.text(foodItem.name), findsOneWidget);
+    expect(find.text('Calories: ' + foodItem.calories), findsOneWidget);
+    expect(find.text('Fats: ' + foodItem.fats), findsOneWidget);
+    expect(find.text('Protein: ' + foodItem.proteins), findsOneWidget);
   });
 }
